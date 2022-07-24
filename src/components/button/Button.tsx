@@ -1,6 +1,10 @@
 import { StyledButton } from "./styles"
 
-export const Button = () => {
-    return <StyledButton type='submit'> Ohhhoooo 🍻 </StyledButton>
+interface IProps {
+    onClick: () => void;
+}
+
+export const Button = ({onClick}: IProps) => {
+    return <StyledButton onClick={({ target }) => onClick( ) } type='button'> Ohhhoooo 🍻 </StyledButton>
 }
 
