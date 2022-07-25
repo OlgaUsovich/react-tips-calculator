@@ -1,5 +1,5 @@
 export const customStyles = {
-    control: (styles: any, state: any) => ({
+    control: (styles: any, state: any) => ({ // ??? типы
       ...styles,
       borderRadius: '30px',
       height: '68px',
@@ -13,7 +13,7 @@ export const customStyles = {
       
     }),
 
-    input: (styles: any) => ({
+    input: (styles: any) => ({ // ??? типы
         ...styles,
         color: '#756C6C',
         fontSize: '18px',
@@ -21,7 +21,7 @@ export const customStyles = {
     indicatorSeparator: () => ({
         display: 'none',
       }),
-    indicatorContainer: (styles: any) => ({
+    indicatorContainer: (styles: any) => ({ // ??? типы
         ...styles,
         color: '#756C6C',
         width: '22px',

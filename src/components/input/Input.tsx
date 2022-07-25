@@ -7,5 +7,12 @@ interface IProps {
 }
 
 export const Input = ({ placeholder, value, onChange }: IProps) => {
-  return <StyledInput placeholder={placeholder} value={value} onChange={({ target }) => onChange(target.value)} type="number" />;
+  return (
+    <StyledInput
+      placeholder={placeholder}
+      value={value}
+      onChange={({ target }) => onChange(target.value)}
+      type="number"
+    />
+  );
 };

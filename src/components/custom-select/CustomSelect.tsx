@@ -3,7 +3,7 @@ import Select from "react-select";
 import { customStyles } from "./styles";
 
 interface IProps {
-  onChange: (newValue: any) => void;
+  onChange: (newValue: any) => void; // ???? тип
   value: IOption | undefined | "";
   options: IOption[];
 }

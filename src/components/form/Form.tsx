@@ -39,7 +39,7 @@ export const Form = () => {
     return percent ? options.find((option) => option.value === percent) : "";
   };
 
-  const handlePercent = (newValue: any): void => {
+  const handlePercent = (newValue: IOption): void => {
     setPercent(newValue.value);
   };
 
@@ -53,13 +53,13 @@ export const Form = () => {
     setTotal(calculateTips(bill, people, percent));
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     if (bill && people) {
-      return setButtonState(false)
+      return setButtonState(false);
     } else {
-      return setButtonState(true)
+      return setButtonState(true);
     }
-  })
+  });
 
   return (
     <StyledForm>
@@ -69,7 +69,7 @@ export const Form = () => {
       <Input placeholder="Enter people" value={people} onChange={handlePeople} />
       <CustomSelect onChange={handlePercent} value={getPercentValue()} options={options} />
       <Total>Total: {total.toFixed(2)}$</Total>
-      <Button onClick={onButtonClick}  disabled={ buttonState }/>
+      <Button onClick={onButtonClick} disabled={buttonState} />
     </StyledForm>
   );
 };

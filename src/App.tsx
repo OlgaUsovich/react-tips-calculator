@@ -4,8 +4,8 @@ import { CircleLeft, CircleTop, FormContainer, GlobalStyle } from "./GlobalStyle
 function App() {
   return (
     <>
-      <CircleTop/>
-      <CircleLeft/>
+      <CircleTop />
+      <CircleLeft />
       <GlobalStyle />
       <FormContainer>
         <Form />
