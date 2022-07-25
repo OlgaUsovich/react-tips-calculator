@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IOption } from "../../types/types";
 import { Button } from "../button/Button";
 import { CustomSelect } from "../custom-select/CustomSelect";
@@ -25,6 +25,7 @@ export const Form = () => {
   const [people, setPeople] = useState("");
   const [percent, setPercent] = useState(10);
   const [total, setTotal] = useState(0.0);
+  const [buttonState, setButtonState] = useState(true);
 
   const handleBill = (value: string): void => {
     setBill(value);
@@ -52,6 +53,14 @@ export const Form = () => {
     setTotal(calculateTips(bill, people, percent));
   };
 
+  useEffect(() => {
+    if (bill && people) {
+      return setButtonState(false)
+    } else {
+      return setButtonState(true)
+    }
+  })
+
   return (
     <StyledForm>
       <Title>Welcome to App</Title>
@@ -60,7 +69,7 @@ export const Form = () => {
       <Input placeholder="Enter people" value={people} onChange={handlePeople} />
       <CustomSelect onChange={handlePercent} value={getPercentValue()} options={options} />
       <Total>Total: {total.toFixed(2)}$</Total>
-      <Button onClick={onButtonClick} />
+      <Button onClick={onButtonClick}  disabled={ buttonState }/>
     </StyledForm>
   );
 };

@@ -7,4 +7,10 @@ export const StyledButton = styled.button`
     font-size: 24px;
     color: #FFFFFF;
     cursor: pointer;
+
+    &:disabled,
+    &[disabled]{
+        opacity: 50%;
+        cursor: default;
+}
 `
