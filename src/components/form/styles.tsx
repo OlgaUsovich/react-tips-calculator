@@ -19,6 +19,7 @@ export const StyledForm = styled.form`
 
 export const Title = styled.h1`
   font-size: 24px;
+  font-weight: 400;
   text-align: center;
 
   @media screen and (min-width: 414.99px) {
@@ -37,6 +38,7 @@ export const Subtitle = styled.h2`
   text-align: center;
   font-family: "Roboto", "sans-serif";
   font-size: 24px;
+  font-weight: 400;
 
   @media screen and (min-width: 414.99px) {
     font-size: 24px;

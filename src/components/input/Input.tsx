@@ -1,9 +1,10 @@
+import { ChangeEvent } from "react";
 import { StyledInput } from "./styles";
 
 interface IProps {
   placeholder: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = ({ placeholder, value, onChange }: IProps) => {
@@ -11,7 +12,7 @@ export const Input = ({ placeholder, value, onChange }: IProps) => {
     <StyledInput
       placeholder={placeholder}
       value={value}
-      onChange={({ target }) => onChange(target.value)}
+      onChange={onChange}
       type="number"
     />
   );

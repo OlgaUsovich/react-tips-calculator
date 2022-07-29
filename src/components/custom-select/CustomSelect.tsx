@@ -1,13 +1,18 @@
-import { IOption } from "../../types/types";
+import { ITipsOption } from "../../types/types";
 import Select from "react-select";
 import { customStyles } from "./styles";
 
 interface IProps {
-  onChange: (newValue: any) => void; // ???? тип
-  value: IOption | undefined | "";
-  options: IOption[];
+  tips: ITipsOption;
+  handleSelect: (option: ITipsOption | null) => void;
 }
 
-export const CustomSelect = ({ onChange, value, options }: IProps) => {
-  return <Select onChange={onChange} value={value} options={options} styles={customStyles} isSearchable={false} />;
+export const CustomSelect = ({ tips, handleSelect }: IProps) => {
+  const options: ITipsOption[] = [
+    {value: 10, label: "10%"},
+    {value: 15, label: "15%"},
+    {value: 20, label: "20%"},
+  ];
+
+  return <Select onChange={handleSelect} value={tips} options={options} styles={customStyles} isSearchable={false} isMulti={false} />;
 };

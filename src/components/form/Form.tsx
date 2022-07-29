@@ -1,46 +1,23 @@
-import { useEffect, useState } from "react";
-import { IOption } from "../../types/types";
+import { FormEvent, useEffect, useState } from "react";
+import { useInput } from "../../hooks/useInput";
+import { ITipsOption } from "../../types/types";
 import { Button } from "../button/Button";
 import { CustomSelect } from "../custom-select/CustomSelect";
 import { Input } from "../input/Input";
 import { Title, StyledForm, Subtitle, Total } from "./styles";
 
-const options: IOption[] = [
-  {
-    value: 10,
-    label: "10%",
-  },
-  {
-    value: 15,
-    label: "15%",
-  },
-  {
-    value: 20,
-    label: "20%",
-  },
-];
 
 export const Form = () => {
-  const [bill, setBill] = useState("");
-  const [people, setPeople] = useState("");
-  const [percent, setPercent] = useState(10);
-  const [total, setTotal] = useState(0.0);
-  const [buttonState, setButtonState] = useState(true);
+  const bill = useInput();
+  const people = useInput();
+  const [tips, setTips] = useState<ITipsOption>({value: 10, label: "10%"});
+  const [total, setTotal] = useState<number>(0);
+  const [buttonState, setButtonState] = useState<boolean>(true);
 
-  const handleBill = (value: string): void => {
-    setBill(value);
-  };
-
-  const handlePeople = (value: string): void => {
-    setPeople(value);
-  };
-
-  const getPercentValue = (): IOption | undefined | "" => {
-    return percent ? options.find((option) => option.value === percent) : "";
-  };
-
-  const handlePercent = (newValue: IOption): void => {
-    setPercent(newValue.value);
+  const handleSelect = (option: ITipsOption | null): void => {
+    if (option){
+      setTips(option);
+    }
   };
 
   const calculateTips = (billStr: string, peopleStr: string, percent: number): number => {
@@ -49,27 +26,28 @@ export const Form = () => {
     return bill + ((bill * percent) / 100) * people;
   };
 
-  const onButtonClick = (): void => {
-    setTotal(calculateTips(bill, people, percent));
+  const handleSubmit= (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    setTotal(calculateTips(bill.value, people.value, tips.value));
   };
 
   useEffect((): void => {
-    if (bill && people) {
+    if (bill.value && people.value) {
       return setButtonState(false);
     } else {
       return setButtonState(true);
     }
-  });
+  }, [bill, people]);
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <Title>Welcome to App</Title>
       <Subtitle>Let’s go calculate your tips</Subtitle>
-      <Input placeholder="Enter bill" value={bill} onChange={handleBill} />
-      <Input placeholder="Enter people" value={people} onChange={handlePeople} />
-      <CustomSelect onChange={handlePercent} value={getPercentValue()} options={options} />
+      <Input placeholder="Enter bill" {...bill} />
+      <Input placeholder="Enter people" {...people} />
+      <CustomSelect tips={tips} handleSelect={handleSelect} />
       <Total>Total: {total.toFixed(2)}$</Total>
-      <Button onClick={onButtonClick} disabled={buttonState} />
+      <Button disabled={buttonState} />
     </StyledForm>
   );
 };

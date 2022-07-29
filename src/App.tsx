@@ -1,16 +1,11 @@
 import { Form } from "./components/form/Form";
-import { CircleLeft, CircleTop, FormContainer, GlobalStyle } from "./GlobalStyles";
+import { Wrapper } from "./ui/base";
 
 function App() {
   return (
-    <>
-      <CircleTop />
-      <CircleLeft />
-      <GlobalStyle />
-      <FormContainer>
+      <Wrapper>
         <Form />
-      </FormContainer>
-    </>
+      </Wrapper>
   );
 }
 
