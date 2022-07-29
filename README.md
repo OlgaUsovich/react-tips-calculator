@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/OlgaUsovich/react-tips-calculator">
-    <img src="./src/assets/logo.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Tips Calculator</h3>
@@ -19,7 +19,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![screenshot.png](./src/assets/screenshot.png)
+![screenshot.png](src/assets/screenshot.png)
 
 ### Built With
 
