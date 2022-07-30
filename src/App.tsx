@@ -1,7 +1,7 @@
-import { Form } from "./components/form/Form";
+import { Form } from "./components/Form/Form";
 import { Wrapper } from "./ui/base";
 
-function App() {
+const App = () => {
   return (
       <Wrapper>
         <Form />
